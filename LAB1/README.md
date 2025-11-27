@@ -31,7 +31,7 @@
 -----
 
 ## C2
-![](C2.png)ฃ
+![](C2.png)
 
  C2: Container Diagram
 
