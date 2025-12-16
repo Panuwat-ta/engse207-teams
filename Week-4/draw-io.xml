@@ -1,0 +1,64 @@
+<mxGraphModel dx="1097" dy="592" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="system_boundary" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;dashed=1;" value="Task Board System (Microservices)" vertex="1">
+      <mxGeometry height="520" width="840" x="160" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="user" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="User&lt;br&gt;(ผู้ใช้งาน)" vertex="1">
+      <mxGeometry height="80" width="40" x="40" y="240" as="geometry" />
+    </mxCell>
+    <mxCell id="webapp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Web Application&lt;br&gt;(Frontend)&lt;br&gt;&lt;i&gt;React / Vue&lt;/i&gt;" vertex="1">
+      <mxGeometry height="80" width="140" x="200" y="250" as="geometry" />
+    </mxCell>
+    <mxCell id="gateway" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="API Gateway&lt;br&gt;&lt;i&gt;Nginx / Node Proxy&lt;/i&gt;" vertex="1">
+      <mxGeometry height="80" width="140" x="400" y="250" as="geometry" />
+    </mxCell>
+    <mxCell id="task_group" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=none;strokeColor=#b0b0b0;dashed=1;" value="Task Management Domain" vertex="1">
+      <mxGeometry height="180" width="360" x="600" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="task_service" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Task Service&lt;br&gt;&lt;i&gt;Node.js (Express)&lt;/i&gt;" vertex="1">
+      <mxGeometry height="80" width="140" x="630" y="130" as="geometry" />
+    </mxCell>
+    <mxCell id="task_db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Task DB&lt;br&gt;&lt;i&gt;PostgreSQL&lt;/i&gt;" vertex="1">
+      <mxGeometry height="80" width="100" x="830" y="130" as="geometry" />
+    </mxCell>
+    <mxCell id="chat_group" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=none;strokeColor=#b0b0b0;dashed=1;" value="Chat Domain" vertex="1">
+      <mxGeometry height="180" width="360" x="600" y="320" as="geometry" />
+    </mxCell>
+    <mxCell id="chat_service" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Chat Service&lt;br&gt;&lt;i&gt;Node.js (Socket.io)&lt;/i&gt;" vertex="1">
+      <mxGeometry height="80" width="140" x="630" y="370" as="geometry" />
+    </mxCell>
+    <mxCell id="chat_db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Chat DB&lt;br&gt;&lt;i&gt;MongoDB&lt;/i&gt;" vertex="1">
+      <mxGeometry height="80" width="100" x="830" y="370" as="geometry" />
+    </mxCell>
+    <mxCell id="rel1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="webapp" value="HTTPS">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel2" edge="1" parent="1" source="webapp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="gateway" value="JSON/WS">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel3" edge="1" parent="1" source="gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="task_service" value="REST API">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="560" y="290" />
+          <mxPoint x="560" y="170" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel4" edge="1" parent="1" source="gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="chat_service" value="WebSocket">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="560" y="290" />
+          <mxPoint x="560" y="410" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel5" edge="1" parent="1" source="task_service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="task_db" value="SQL">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel6" edge="1" parent="1" source="chat_service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="chat_db" value="NoSQL">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
