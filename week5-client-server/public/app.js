@@ -46,25 +46,20 @@ async function fetchTasks() {
 async function createTask(taskData) {
     showLoading();
     try {
-        const response = await fetch('API.TASKS', {
+        const response = await fetch(API.TASKS, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(taskData)
         });
         
-        if (!response.ok) {
-            throw new Error('Failed to create task');
-        }
+        if (!response.ok) throw new Error('Failed to create task');
         
-        const data = await response.json();
-        allTasks.unshift(data.task); // Add to beginning
+        const result = await response.json();
+        // แก้ไข: ใช้ result.data เพื่อรับ object task ที่สร้างใหม่
+        allTasks.unshift(result.data); 
         renderTasks();
         
-        // Reset form
         addTaskForm.reset();
-        
         alert('✅ Task created successfully!');
     } catch (error) {
         console.error('Error creating task:', error);
@@ -78,22 +73,20 @@ async function createTask(taskData) {
 async function updateTaskStatus(taskId, newStatus) {
     showLoading();
     try {
-        const response = await fetch(`API.TASKS/${taskId}/status`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+        const response = await fetch(`${API.TASKS}/${taskId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status: newStatus }),
         });
 
-        if (!response.ok) {
-            throw new Error('Failed to update task status');
-        }
+        if (!response.ok) throw new Error('Failed to update task status');
 
-        const data = await response.json();
+        const result = await response.json();
         const taskIndex = allTasks.findIndex(t => t.id === taskId);
+        
         if (taskIndex !== -1) {
-            allTasks[taskIndex] = data.task;
+            // แก้ไข: ใช้ result.data เพื่อรับค่า task ที่อัปเดตแล้ว
+            allTasks[taskIndex] = result.data; 
         }
         renderTasks();
     } catch (error) {
@@ -112,7 +105,7 @@ async function deleteTask(taskId) {
     
     showLoading();
     try {
-        const response = await fetch(`API.TASKS/${taskId}`, {
+        const response = await fetch(`${API.TASKS}/${taskId}`, {
             method: 'DELETE',
         });
 
