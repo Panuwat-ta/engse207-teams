@@ -1,10 +1,7 @@
 # engse207
 
-### นางสาว อภิรญา  สายนาคำ
-- ตำแหน่ง Teader/PO
-
 ### นาย ภานุวัฒน์ ต๋าคำ
-- ตำแหน่ง Dev A / Dev B 
+- ตำแหน่ง Team Leader / PO <br>Dev A / Dev B
 
 ### นาย ศุภกิจ  รักบุตร
 - ตำแหน่ง System Analyst
