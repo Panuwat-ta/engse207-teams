@@ -20,7 +20,7 @@ sudo systemctl status nginx --no-pager | head -3
 # Start Node.js with PM2
 echo ""
 echo "3. Starting Node.js Backend..."
-cd ~/engse207-labs/week6-ntier
+cd ~/engse207-teams/term-project/week6-ntier
 pm2 start server.js --name "taskboard-api" --watch
 pm2 status
 

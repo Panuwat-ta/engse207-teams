@@ -28,13 +28,13 @@ test_endpoint() {
     echo -n "Testing: $name... "
     
     if [ "$method" = "GET" ]; then
-        response=$(curl -s "$url")
+        response=$(curl -k -s "$url")
     elif [ "$method" = "POST" ]; then
-        response=$(curl -s -X POST -H "Content-Type: application/json" -d "$data" "$url")
+        response=$(curl -k -s -X POST -H "Content-Type: application/json" -d "$data" "$url")
     elif [ "$method" = "PATCH" ]; then
-        response=$(curl -s -X PATCH -H "Content-Type: application/json" -d "$data" "$url")
+        response=$(curl -k -s -X PATCH -H "Content-Type: application/json" -d "$data" "$url")
     elif [ "$method" = "DELETE" ]; then
-        response=$(curl -s -X DELETE "$url")
+        response=$(curl -k -s -X DELETE "$url")
     fi
     
     if echo "$response" | grep -q "$expected"; then
@@ -77,10 +77,10 @@ echo "=== Testing via HTTPS (Nginx) ==="
 echo ""
 
 # Test 7: HTTPS Health Check
-test_endpoint "HTTPS Health" "GET" "-k $HTTPS_URL/health" "" "healthy"
+test_endpoint "HTTPS Health" "GET" "$HTTPS_URL/health" "" "healthy"
 
 # Test 8: HTTPS Get Tasks
-test_endpoint "HTTPS Get Tasks" "GET" "-k $HTTPS_URL/tasks" "" "success"
+test_endpoint "HTTPS Get Tasks" "GET" "$HTTPS_URL/tasks" "" "success"
 
 echo ""
 echo "═══════════════════════════════════════════════════════"
