@@ -25,8 +25,7 @@ fi
 # Test query
 echo ""
 echo "Tables:"
-psql -h localhost -U taskboard -d $DB_NAME -c "SELECT COUNT(*) FROM tasks;"
-
+psql -h $DB_HOST -p $DB_PORT -U $DB_USER -d $DB_NAME -c "\dt"
 
 echo ""
 echo "Task count:"
