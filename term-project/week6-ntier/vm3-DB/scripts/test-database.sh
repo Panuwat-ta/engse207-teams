@@ -5,7 +5,7 @@
 DB_HOST="localhost"
 DB_PORT="5432"
 DB_NAME="taskboard_db"
-DB_USERUSER="taskboard"
+DB_USER="taskboard"
 DB_PASSWORD="taskboard123"
 
 echo "=== VM3: Database Test ==="
