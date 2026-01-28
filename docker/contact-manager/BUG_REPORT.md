@@ -16,4 +16,4 @@
 ```
 
 ## add name length validation
-![](/img/add-name-length-validation.png)
+![](./img/add-name-length-validation.png)
