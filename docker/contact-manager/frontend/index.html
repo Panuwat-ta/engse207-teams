@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📇 Contact Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📇 Contact Manager</h1>
+            <p>ระบบจัดการรายชื่อติดต่อ</p>
+            <!-- Mock Mode Indicator -->
+            <div id="mockIndicator" class="mock-indicator" style="display: none;">
+                🔶 MOCK MODE
+            </div>
+        </header>
+
+        <!-- Search & Add -->
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 ค้นหาชื่อ...">
+            </div>
+            <button class="btn btn-primary" onclick="showAddForm()">
+                ➕ เพิ่มรายชื่อ
+            </button>
+        </div>
+
+        <!-- Add Contact Form (Hidden by default) -->
+        <div id="addForm" class="form-container" style="display: none;">
+            <h3>เพิ่มรายชื่อใหม่</h3>
+            <form onsubmit="addContact(event)">
+                <div class="form-group">
+                    <label for="name">ชื่อ *</label>
+                    <!-- ⚠️ ยังไม่มี maxlength (จะเพิ่มตอน fix bug) -->
+                    <input type="text" id="name" required placeholder="ใส่ชื่อ...">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="example@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">เบอร์โทร</label>
+                    <input type="text" id="phone" placeholder="08x-xxx-xxxx">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">💾 บันทึก</button>
+                    <button type="button" class="btn btn-secondary" onclick="hideAddForm()">
+                        ❌ ยกเลิก
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact List -->
+        <div id="contactList" class="contact-list">
+            <p class="loading">กำลังโหลด...</p>
+        </div>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
